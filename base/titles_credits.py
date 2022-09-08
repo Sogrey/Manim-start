@@ -8,7 +8,7 @@ def Title(self, title, offsetMultiple=3.5):
     title.generate_target()
     title.target.shift(UL*offsetMultiple)
     self.play(MoveToTarget(title))
-    self.wait(3)
+    self.wait(2)
 
 def Credits(self, credits=''):
     self.clear()
