@@ -4,9 +4,9 @@ def Title(self, title, offsetMultiple=3.5):
     title = Text(title)
     self.add(title)
     self.wait(3)
-    self.play(ScaleInPlace(title, 0.5))
     title.generate_target()
-    title.target.shift(UL*offsetMultiple)
+    title.target.shift(UL*offsetMultiple).scale(0.5)
+    # ScaleInPlace(title, 0.5)
     self.play(MoveToTarget(title))
     self.wait(2)
 
