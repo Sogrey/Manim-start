@@ -1,12 +1,12 @@
 from manim import *
 
-def Title(self, title):
+def Title(self, title, offsetMultiple=3.8):
     title = Text(title)
     self.add(title)
     self.wait(3)
     self.play(ScaleInPlace(title, 0.5))
     title.generate_target()
-    title.target.shift(UL*3.8)
+    title.target.shift(UL*offsetMultiple)
     self.play(MoveToTarget(title))
     self.wait(3)
 
@@ -22,6 +22,9 @@ def Credits(self, credits=''):
 # manim titles_credits.py -pqm
 class TestTitle(Scene):
     def construct(self):
-        Title(self, 'The title of the animation')
+        Title(self, """
+The title of the animation
+The title
+        """,3.5)
 
-        Credits(self,'THE END...')
+        Credits(self)
