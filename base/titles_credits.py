@@ -1,6 +1,6 @@
 from manim import *
 
-def Title(self, title, offsetMultiple=3.8):
+def Title(self, title, offsetMultiple=3.5):
     title = Text(title)
     self.add(title)
     self.wait(3)
