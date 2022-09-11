@@ -14,9 +14,8 @@ def Credits(self, credits=''):
     self.clear()
     if len(credits) == 0:
         credits = "THE END"
-    text = Text(credits)
-    boundary = AnimatedBoundary(text, colors=[YELLOW], cycle_rate=3)
-    self.add(text, boundary)
+    text = Text(credits).set_color(TEAL_D).scale(1)
+    self.add(text)
     self.wait(2)
 
 # manim titles_credits.py -pqm
