@@ -2,7 +2,7 @@ from manim import *
 
 def Title(self, title):
     title0 = Text(title) # 初态
-    title = Text(title) # 终态
+    title = title0.copy() # 终态
     self.add(title0)
     self.wait(3)
     title.to_corner(UP + LEFT).scale(0.5)
