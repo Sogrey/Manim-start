@@ -1,10 +1,74 @@
 from manim import *
-# manim titles_credits.py -pqm
+from manim_cad_drawing_utils import *
+from manim_fonts import *
+from manim_fontawesome import *
 
 # 导入base目录下基础工具函数
 import sys
 sys.path.append('../base/')
 from titles_credits import *
+
+# config.background_color = WHITE
+from contextlib import contextmanager
+import manimpango
+
+@contextmanager
+def RegisterFont():
+    pth = "C:/Windows/Fonts/comicz.ttf"
+    # "C:/Users/Administrator/AppData/Local/Microsoft/Windows/Fonts/ZiXinFangMingKeBen.ttf"
+    # "C:/Windows/Fonts/Inkfree.ttf"
+    # "C:/Windows/Fonts/svgasys.fon"
+    # "C:/Windows/Fonts/方正粗黑宋简体.ttf" # download_fonts(font_family)
+    orig_font = manimpango.list_fonts()
+
+    if not manimpango.register_font(str(pth)):
+        print ("Could not register font for font family '" + pth + "'. Cannot    continue.")
+    new_font = manimpango.list_fonts()
+    print(new_font)
+    print(orig_font)
+    fonts_names = list(set(new_font) - set(orig_font))
+    print("Found fonts %s", fonts_names)
+
+    fonts_names = ['comicz']
+    if fonts_names == []:
+        print("No fonts registered")
+
+    try:
+        yield fonts_names
+    finally:
+        manimpango.unregister_font(str(pth))
+
+class TestFont(Scene):
+    def construct(self):
+        # RegisterFont()
+        a=Text("字心坊明刻本（古籍版）",font='字心坊明刻本（古籍版）')
+        # a=Text("Candara",font='Comic Sans MS')
+        self.play(Write(a))
+        with RegisterFont() as fonts:
+            print(fonts)
+            # a=Text("ABCDEFGHIJKLMNOPQRSTUVWXYZ",font='comicz')
+            # self.play(Write(a))
+        self.wait(30)
+
+class TextMoreCustomization(Scene):
+    def construct(self):
+        text1 = Text(
+            'Google',
+            t2c={'[:1]': '#3174f0', '[1:2]': '#e53125',
+                 '[2:3]': '#fbb003', '[3:4]': '#3174f0',
+                 '[4:5]': '#269a43', '[5:]': '#e53125'}, font_size=58).scale(3)
+        self.add(text1)
+        
+class AngryEmoji(Scene):
+    def construct(self):
+        # import https://fontawesome.com/v5.15/icons/angry?style=regular
+        self.add(solid.archway.set_color(WHITE))
+
+class ExampleTextFont(Scene):
+    def construct(self):
+        with RegisterFont("Poppins") as fonts:
+            a=Text("Hello World",font=fonts[0])
+            self.play(Write(a))
 
 def Logo(self):
     circle = Circle()
@@ -73,7 +137,6 @@ class ShowFamousVerses(Scene):
 
         Credits(self)
 
-
 class HelloCircle(Scene):
     def construct(self):
         # blue_circle = Circle(color=BLUE, fill_opacity=0.5)
@@ -86,7 +149,6 @@ class HelloCircle(Scene):
 
         self.play(Create(blue_circle), Write(label))
         self.wait()
-
 
 class CircleAnnouncement(Scene):
     def construct(self):
