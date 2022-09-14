@@ -1,4 +1,5 @@
 from manim import *
+# import cv2
 
 def Title(self, title):
     title0 = Text(title) # 初态
@@ -18,13 +19,19 @@ def Credits(self, credits=''):
     # self.wait(2)
     # self.play(FadeOut(text, shift=DOWN * 2, scale=1.5))
 
-    tex_in = Tex("THE END").scale(1).set_color(TEAL_D)
-    tex_out = Tex("@Sogrey").scale(.5).set_color(TEAL_D)
+    tex_in = Tex(credits).scale(1).set_color(TEAL_D)
+    tex_out = Tex("@Sogrey").scale(.7).set_color(TEAL_D)
     self.play(FadeIn(tex_in, shift=DOWN, scale=0.66))
     self.wait(2)
     self.play(ReplacementTransform(tex_in, tex_out))
     self.wait(2)
     self.play(FadeOut(tex_out, shift=DOWN * 2, scale=1.5))
+
+def BackgroundImage(self, backgroundImage):
+    # im = cv2.imread(backgroundImage) # 读入默认是unit8格式的numpy array
+    image = ImageMobject(backgroundImage)
+    image.height = 10
+    self.add(image)
 
 # manim titles_credits.py -pqm
 class TestTitle(Scene):
