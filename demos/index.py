@@ -95,3 +95,21 @@ class CauchyIntegralFormula(Scene):
             r"[z^n]f(z) = \frac{1}{2\pi i}\oint_{\gamma} \frac{f(z)}{z^{n+1}}~dz")
         self.play(Write(formula), run_time=3)
         self.wait()
+
+
+# class Test_round(Scene):
+#     def construct(self):
+#         mob1 = RegularPolygon(n=4,radius=1.5,color=PINK).rotate(PI/4)
+#         mob2 = Triangle(radius=1.5,color=TEAL)
+#         crbase = Rectangle(height=0.5,width=3)
+#         mob3 = Union(crbase.copy().rotate(PI/4),crbase.copy().rotate(-PI/4),color=BLUE)
+#         mob4 = Circle(radius=1.3)
+#         mob2.shift(2.5*UP)
+#         mob3.shift(2.5*DOWN)
+#         mob1.shift(2.5*LEFT)
+#         mob4.shift(2.5*RIGHT)
+
+#         mob1 = Round_Corners(mob1, 0.25)
+#         mob2 = Round_Corners(mob2, 0.25)
+#         mob3 = Round_Corners(mob3, 0.25)
+#         self.add(mob1,mob2,mob3,mob4)
