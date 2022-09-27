@@ -182,3 +182,48 @@ class TMathexExample2(Scene):
 
         # formula = Group(tex,bi,ti)
         self.play(Write(tex),Write(bi),Write(ti),Write(box),Write(cross),run_time=5)
+
+class MoveTo(Scene):
+    def construct(self):
+        text = Text('Hello world!')
+        text1 = text.copy()
+        
+        text.move_to(UP + 2 * RIGHT)
+
+        self.add(text,text1)
+
+class RotateObject(Scene):
+    def construct(self):
+        textM = Text("Text")
+        textC = Text("Reference text")
+        textM.shift(UP)
+        textM.rotate(PI/4) 
+        self.play(Write(textM), Write(textC))
+        self.wait(2)
+
+class UsingRotate(Scene):
+    def construct(self):
+        self.play(
+            Rotate(
+                Square(side_length=0.5).shift(UP * 2),
+                angle=2*PI,
+                about_point=ORIGIN,
+                rate_func=linear,
+            ),
+            Rotate(Square(side_length=0.5), angle=2*PI, rate_func=linear),
+            )
+
+class UsingRotate2(Scene):
+    def construct(self):
+        self.play(
+            Rotating(
+                Square(side_length=0.5).shift(UP * 2),
+                angle=2*PI,
+                # about_point=ORIGIN,
+                # rate_func=linear,
+                use_override=True,
+            ),
+            Rotating(Square(side_length=0.5), angle=2*PI, rate_func=linear,use_override=False),
+            )
+
+
