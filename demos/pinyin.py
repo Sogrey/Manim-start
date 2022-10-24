@@ -110,7 +110,7 @@ class showPinyin_shengmu(Scene):
         Credits(self)
 
 class showPinyin_yunmu(Scene):
-    def construct(self):
+    def construct(self):  
         # BackgroundImage(self, '../assets/bg01.jpg')
         Title(self, "汉语拼音 -- 韵母表")
 
@@ -133,7 +133,7 @@ class showPinyin_yunmu(Scene):
         }
         datas = {
             'a': [[5.2, 2.25,0],[-4.0, 2.25, 0],'啊','单韵母'],
-            'o': [[5.2, 2.25,0],[-3.0, 2.25, 0],'喔','单韵母'],
+            'o': [[5.2, 2.25,0],[-3.0, 2.25, 0],'噢','单韵母'],
             'e': [[5.2, 2.25,0],[-2.0, 2.25, 0],'鹅','单韵母'],
 
             'i': [[5.2, 2.35,0],[0.0, 2.3, 0],'衣','单韵母'],
